@@ -1,1 +1,23 @@
-Esta es la primera versión del readme
+Descripción de la Fuente de datos
+The Museum of Modern Art (MoMA) Collection
+
+La colección del MoMA incluye expresiones visuales: pintura, escultura, "printmaking", dibujos, fotografía, arquitectura, diseño,filme y media así como "art performance".
+
+La base de datos "Artists"  consta de 15,790 records. Los campos incluyenn nombre, nacionalidad, género, año de nacimiento, año de muerte, Wiki WID y Getty ULAN ID.  
+
+La base de datos "Artworks" consta de 138,025 records. El metadata incluye para cada obra el título, artista, fecha en que se realizó, "medium", dimensiones, y fecha de adquisición por parte del Museo.
+
+Descripción de la entidad
+pendiente
+
+Estructura de la base de datos
+pendiente
+
+Pipeline
+pendiente
+
+Instalación
+Es necesario tener poetry innstalado
+
+Ejecución
+clonar el repositorio y dentro del repositorio poetry install. 
