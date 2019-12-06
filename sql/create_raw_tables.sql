@@ -2,7 +2,7 @@ create schema if not exists raw;
 
 drop table if exists raw.artistas;
 
-create table raw.artistas (
+create table raw.Artists (
   "ConstituentID" TEXT,
   "DisplayName" TEXT,
   "ArtistBio" TEXT,
@@ -14,11 +14,11 @@ create table raw.artistas (
   "ULAN" TEXT
 );
 
-comment on table raw.artistas is 'describe las características de un artista';
+comment on table raw.Artists is 'describe las caracteristicas de un artista';
 
-drop table if exists raw.obras;
+drop table if exists raw.Artworks;
 
-create table raw.obras (
+create table raw.Artworks (
   "Title" TEXT,
   "Artist" TEXT,
   "ConstituentID" TEXT,
@@ -50,6 +50,6 @@ create table raw.obras (
   "Duration (sec.)" TEXT
 );
 
-comment on table raw.obras is 'describe las características de las obras';
+comment on table raw.Artworks is 'describe las caracteristicas de las obras';
 
 
