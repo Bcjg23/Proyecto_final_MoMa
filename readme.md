@@ -14,17 +14,26 @@ pendiente
 # Estructura de la base de datos
 pendiente
 
-# Pipeline
-pendiente
+# Dependencias
+El pipeline está implemeantado en Python con las siguientes dependencias:
+
+```
+numpy
+flake8, flake8-docstrings, xdoctest, pydocstyle, black, isort, mypy. pytest-cov, pytest-mock,coverage, tox, towncrier, sphinx
+```
+
 
 # Instalación
 
-Es necesario tener poetry instalado : pip install poetry
+Es necesario tener poetry instalado : 
+```
+pip install poetry
+```
 
 Para poder descargar las bases de datos es necesario instalar git-lfs. 
 
 La instalación de git-lfs para usuarios de Ubuntu:
-
+```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh
 
 sudo bash
@@ -32,8 +41,16 @@ sudo bash
 sudo apt-get install git-lfs
 
 git lfs install --local 
+```
 
 # Ejecución
 
-1. Clonar este  repositorio usando:  git clone 
-2. Instalar las dependencias necesarias usando: poetry install  
+1. Clonar este  repositorio
+```
+git clone
+```
+ 
+2. Instalar las dependencias necesarias
+```
+poetry install
+```  
