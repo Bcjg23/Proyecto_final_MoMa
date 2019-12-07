@@ -22,6 +22,8 @@ numpy
 flake8, flake8-docstrings, xdoctest, pydocstyle, black, isort, mypy. pytest-cov, pytest-mock,coverage, tox, towncrier, sphinx
 ```
 
+**Nota:** Es importante tener en cuenta que el sistema en el cual se piensa ejecutar este repositorio cuente con una instalación adecuada de postgresql, pues módulos de python como psycopg2 dependen esto (p.ej. en algunos casos es necesario tener instalada la librería libpq-dev o alguna otra interfaz de bajo nivel de PostgreSQL).
+
 
 # Instalación
 
