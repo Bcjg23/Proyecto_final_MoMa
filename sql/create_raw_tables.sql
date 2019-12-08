@@ -1,6 +1,6 @@
 create schema if not exists raw;
 
-drop table if exists raw.artistas;
+drop table if exists raw.Artists;
 
 create table raw.Artists (
   "ConstituentID" TEXT,
