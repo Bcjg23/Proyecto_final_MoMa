@@ -55,11 +55,11 @@ def create_raw_tables(ctx):
 def load_moma(ctx):
     conn = ctx.obj['conn']
     with conn.cursor() as cursor:
-        for data_file in Path(settings.get('MOMADIR')).glob('*.csv'):
+        for data_file in Path('data').glob('*.csv'):
             print(data_file)
             table = data_file.stem
             print(table)
-            sql_statement = f"copy raw.{table} from stdin with csv header delimiter as ','"
+            sql_statement = f"COPY raw.{table} FROM stdin with CSV HEADER DELIMITER as ',';"
             print(sql_statement)
             buffer = io.StringIO()
             with open(data_file,'r') as data:
