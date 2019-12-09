@@ -69,21 +69,16 @@ def load_moma(ctx):
 
 @moma.command()
 @click.pass_context
-def to_cleaned():
+def to_cleaned(ctx):
     query = ctx.obj['queries'].get('to_cleaned')
     print(query)
 
 @moma.command()
 @click.pass_context
-def to_semantic():
+def to_semantic(ctx):
     query = ctx.obj['queries'].get('to_semantic')
     print(query)
 
-@moma.command()
-@click.pass_context
-def create_features():
-    query = ctx.obj['queries'].get('create_features')
-    print(query)
 
 
 if __name__ == '__main__':
