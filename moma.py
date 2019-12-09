@@ -71,12 +71,18 @@ def load_moma(ctx):
 @click.pass_context
 def to_cleaned(ctx):
     query = ctx.obj['queries'].get('to_cleaned')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+       cur.execute(query)
     print(query)
 
 @moma.command()
 @click.pass_context
 def to_semantic(ctx):
     query = ctx.obj['queries'].get('to_semantic')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+       cur.execute(query)
     print(query)
 
 
