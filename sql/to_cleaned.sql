@@ -2,7 +2,7 @@ drop table if exists cleaned.artists cascade;
 
 create table cleaned.artists as (
 select
-	"ConstituentID"::int as constituent, 
+	"ConstituentID" as constituent, 
 	lower("DisplayName") as artist, 
 	lower("ArtistBio") as artist_bio, 
 	lower("Nationality") as nationality, 
@@ -10,7 +10,7 @@ select
 	"BeginDate" as birth_date, 
 	"EndDate" as death_date,
 	lower("Wiki QID") as wiki_qid,
-	"ULAN" as ulan,
+	"ULAN" as ulan
 	from raw.artists
 );
 
@@ -20,7 +20,7 @@ create table cleaned.artworks as (
 select
 	"Title" as artwork, 
 	lower("Artist") as artist, 
-	"ConstituentID"::int as constituent, 
+	"ConstituentID" as constituent, 
 	lower("ArtistBio") as artist_bio, 
 	lower("Nationality") as nationality, 
 	"BeginDate" as birth_date, 
@@ -29,7 +29,7 @@ select
 	lower("Medium") as medium, 
 	"Dimensions" as dimensions, 
 	lower("CreditLine") as credit_line, 
-	"AccesionNumber" as accesion_number, 
+	"AccessionNumber" as accession_number, 
 	lower("Classification") as classification, 
 	lower("Department") as department, 
 	"DateAcquired" as date_acquired, 
