@@ -1,5 +1,18 @@
 drop table if exists cleaned.artists cascade;
 
+create or replace function fix_date
+(
+	bad_date text
+)
+returns date
+language sql
+as $$
+select
+	case when bad_date = '0'then null
+	else to_date(bad_date,'YYYY')end as date_fixed;
+$$;
+
+
 create table cleaned.artists as (
 select
 	"ConstituentID" as constituent, 
@@ -7,8 +20,8 @@ select
 	lower("ArtistBio") as artist_bio, 
 	lower("Nationality") as nationality, 
 	lower("Gender") as gender,
-	"BeginDate" as birth_date, 
-	"EndDate" as death_date,
+	fix_date("BeginDate") as birth_date,	
+	fix_date("EndDate")  as death_date,
 	lower("Wiki QID") as wiki_qid,
 	"ULAN" as ulan
 	from raw.artists
