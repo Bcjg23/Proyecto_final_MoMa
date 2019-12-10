@@ -19,7 +19,7 @@ language sql
 as $$
 select
 	case when cons ilike ',' then 'si'
-	else 'no';
+	else 'no' end as n_cons;
 $$;
 
 drop table if exists semantic.entities cascade;
@@ -44,6 +44,5 @@ select
 	date
 	from cleaned.artworks
 );
-from cleaned.artworks; 
 
 comment on table semantic.events is 'Tabla de eventos de las entidades';
