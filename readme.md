@@ -71,7 +71,14 @@ Por lo anterior se condicionan las entidades.
 * Si la fecha de muerte no existe entonces el artista está vivo sí y solo sí el artista nació después de 1950.  
 * Si la edad es igual a 0 se considera como persona moral y se excluye.  
 
-#Pipeline  
+Las siguentes imágenes describen nuestra entidad y eventos.
+
+![](docs/entity.png)
+
+![](docs/events.png)
+
+
+# Pipeline  
 
 El flujo de trabajo que se sigue en el proyecto es el siguiente:  
 
@@ -115,7 +122,7 @@ Para ejecutar el proyecto es necesario seguir los siguientes pasos:
 ```
 git clone https://github.com/Bcjg23/Proyecto_final_MoMa
 ```
-2. Se instalan las dependecias necesarias para correr el proyecto, especificadas en el archivo settings.toml
+2. Se instalan las dependecias necesarias para correr el proyecto, especificadas en el archivo pyproject.toml
 ```
 poetry install
 ```
