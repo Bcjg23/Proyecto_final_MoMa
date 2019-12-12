@@ -18,9 +18,52 @@ La base de datos está compuesta por dos tablas:
 Se decide hacer un análisis en el cual la **Entidad** será  *Artista*, para ello se realiza  la limpieza de esta tabla.  
 
 Algunos de los hallazgos son:  
-* Homónimos. (ejemplo)  
-* Fechas de nacimiento o muerte desconocidos. (ejemplo)  
-* La codificación es igual para un artista del que se desconoce la fecha de muerte  que para uno vivo. (ejemplo)  
+* Homónimos. Se revisa el número de veces que aparece un artista.  
+```
+ select artist,count(*) from cleaned.artists group by artist order by 2 desc limit 10;
+```
+La consulta arroja:
+```
+    artist           | count
+    ------------------+-------
+    unknown designer |    25
+    various artists  |    10
+    unknown artist   |     5
+    john wood        |     3
+    carl aub  ck     |     2
+    richard malone   |     2
+    thompson         |     2
+    william scott    |     2
+    john hunter      |     2
+    david storey     |     2
+    (10 rows)
+```
+Hay artistas que aparecen más de una vez, se supone que se trata de la misma persona.
+```
+select * from cleaned.artists where artist = 'john wood';
+```
+```
+    constituent |  artist   |          artist_bio           | nationality | gender | birth_date | death_date | wiki_qid | ulan
+    -------------+-----------+-------------------------------+-------------+--------+------------+------------+----------+------
+    7756        | john wood | american                      | american    | male   |            |            |          |
+    26359       | john wood | american, born 1922           | american    | male   | 1922-01-01 |            |          |
+    36806       | john wood | british, born hong kong, 1969 | british     | male   | 1969-01-01 |            |          |
+    (3 rows)
+```
+Revisando su información se descarta esta hipótesis, son homónimos.       
+                      
+* Fechas de nacimiento o muerte desconocidos.
+```
+select * from cleaned.artists where constituent='6420';
+```
+```
+    constituent |    artist    | artist_bio | nationality | gender | birth_date | death_date | wiki_qid | ulan
+    -------------+--------------+------------+-------------+--------+------------+------------+----------+------
+    6420        | johann loetz | austrian   | austrian    | male   |            |            |          |
+    (1 row)
+```
+      
+* La codificación es igual para un artista del que se desconoce la fecha de muerte  que para uno vivo.  
 
 Por lo anterior se condicionan las entidades.
 
@@ -63,10 +106,6 @@ Es necesario tener poetry instalado
 ```
 pip install poetry
 ```
-Se instalan las dependecias necesarias para correr el proyecto, especificadas en el archivo settings.toml
-```
-poetry install
-```
 
 # Ejecución
 
@@ -75,32 +114,36 @@ Para ejecutar el proyecto es necesario seguir los siguientes pasos:
 1. Clonar el repositorio.
 ```
 git clone https://github.com/Bcjg23/Proyecto_final_MoMa
-```  
-2. Descargar los datos.
+```
+2. Se instalan las dependecias necesarias para correr el proyecto, especificadas en el archivo settings.toml
+```
+poetry install
+```
+3. Descargar los datos.
 ```
 poetry run sh bin/descarga_datos.sh
 ```
-3. Crear usuario y base de datos.
+4. Crear usuario y base de datos.
 ```
 poetry run sh bin/crear_user_y_db.sh
 ```
-4. Crear esquemas.
+5. Crear esquemas.
 ```
 poetry run python moma.py create-schemas
 ```
-5. Crear las tablas Raw.
+6. Crear las tablas Raw.
 ```
 poetry run python moma.py create-raw-tables
 ```
-6. Cargar las tablas Raw.
+7. Cargar las tablas Raw.
 ```
 poetry run python moma.py load-moma
 ```
-7. Crear las tablas limpias en Cleaned.
+8. Crear las tablas limpias en Cleaned.
 ```
 poetry run python moma.py to-cleaned
 ```
-8. Definir entidades y eventos en  Semantic.
+9. Definir entidades y eventos en  Semantic.
 ```
 poetry run python moma.py to-semantic
 ```
